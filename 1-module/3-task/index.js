@@ -4,5 +4,6 @@
  * @returns {string}
  */
 function ucFirst(str) {
-  // ваш код...
+  return str != "" ? `${str[0].toLocaleUpperCase()}${str.slice(1)}` : str;
 }
+  
