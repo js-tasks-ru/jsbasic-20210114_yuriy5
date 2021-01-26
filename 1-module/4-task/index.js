@@ -4,5 +4,7 @@
  * @returns {boolean}
  */
 function checkSpam(str) {
-  // ваш код...
+  str = str.toLocaleLowerCase();  
+  
+  return ( str.includes('1xbet') || str.includes('xxx') );
 }
