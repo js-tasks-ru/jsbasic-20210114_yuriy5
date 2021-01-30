@@ -35,3 +35,4 @@ function camelize1(str) {
 
   return str.join('');
 }
+
