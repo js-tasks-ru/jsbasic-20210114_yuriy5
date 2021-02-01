@@ -5,5 +5,7 @@
  * @returns {string}
  */
 function showSalary(users, age) {
-  // ваш код...
+  let result="";
+  users.forEach((item) => (item.age <= age) && (result +=`\n${item.name}, ${item.balance}`));
+  return result.slice(1); 
 }
