@@ -4,5 +4,19 @@
  * @returns {{min:number, max:number}}  объект
  */
 function getMinMax(str) {
-  // ваш код...
-}
+    let arrNumbers = [],
+    result;
+
+    str.split(' ').join().split(',').forEach((item) => {
+        if (isFinite(item) && item != "") {
+            arrNumbers.push(item);
+        }
+    })
+
+    if (arrNumbers.length > 0) {
+        return {
+        min: Math.min(...arrNumbers),
+        max: Math.max(...arrNumbers),
+        };
+    }
+}   
