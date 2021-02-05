@@ -4,7 +4,6 @@
  */
 
 
-
 //
 // Does it make sense to use arrays to solve current task? It is string and we can resolve this task without unnecessary conversation to arrays and back.
 //
@@ -35,3 +34,4 @@ function camelize1(str) {
 
   return str.join('');
 }
+
