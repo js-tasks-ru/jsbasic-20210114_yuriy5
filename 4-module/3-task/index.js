@@ -4,35 +4,30 @@
  */
 function highlight(table) {
     for (let i = 0; i < table.rows.length; i++) {
-        checkAvailability(table.rows[i].cells[3]);
-        checkSex(table.rows[i].cells[2]);
-        checkMinor(table.rows[i].cells[1]);
+        checkAvailability(table.rows[i].cells[3], table.rows[i]);
+        checkSex(table.rows[i].cells[2], table.rows[i]);
+        checkMinor(table.rows[i].cells[1], table.rows[i]);
     }
 }
 
-function checkAvailability(item) {
-    let tr = item.parentElement;
+function checkAvailability(item, row) {
     if(item.getAttribute("data-available") === "true") {
-        setClass(tr, "available");
+        setClass(row, "available");
     } else if(item.hasAttribute("data-available")) {
-        setClass(tr, "unavailable");
-
+        setClass(row, "unavailable");
     } else {
-        setAtr(tr, "hidden", "");
+        setAtr(row, "hidden", "");
     }
 }
 
-function checkSex(item) {
-    let tr = item.parentElement;
+function checkSex(item, row) {
     if(item.innerHTML == "m") {
-        setClass(tr, "male");
+        setClass(row, "male");
     } else if(item.innerHTML == "f") {
-        setClass(tr, "female");    
+        setClass(row, "female");    
     } 
 }
 
-function checkMinor(item) {+item.innerHTML < 18 ? setAtr(item.parentElement, "style", "text-decoration: line-through;") : "";}
-
+function checkMinor(item, row) {+item.innerHTML < 18 ? setAtr(row, "style", "text-decoration: line-through;") : "";}
 function setAtr(item, atr, value ="") {item.setAttribute(atr, value)}
 function setClass(item, value) {item.classList.add(value)}
-
