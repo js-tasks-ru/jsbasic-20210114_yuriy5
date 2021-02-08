@@ -3,40 +3,36 @@
  * @param {Element} table
  */
 function highlight(table) {
-    checkAvailability(document.querySelectorAll("td:last-child"));
-    checkSex(document.querySelectorAll("tr td:nth-child(3"));
-    minor(document.querySelectorAll("tr td:nth-child(2"));
-}
-
-function checkAvailability(obj) {
-    obj.forEach((item) => {
-        let tr = item.parentElement;
-        if(item.getAttribute("data-available") === "true") {
-            setAtr(tr, "class", value ="available");
-        } else if(item.hasAttribute("data-available")) {
-            setAtr(tr, "class", value ="unavailable");
-
-        } else {
-            setAtr(tr, "hidden", "", setAtr(tr, "class", value ="unavailable"));
-        }
-    }); 
-}
-
-function checkSex(obj) {
-    for(let item of obj){
-        let tr = item.parentElement;
-        if(item.innerHTML == "m") {
-            setAtr(tr, "class", value ="male");    
-        } else if(item.innerHTML == "f") {
-            setAtr(tr, "class", value ="female");    
-        } 
+    for (let i = 0; i < table.rows.length; i++) {
+        checkAvailability(table.rows[i].cells[3]);
+        checkSex(table.rows[i].cells[2]);
+        checkMinor(table.rows[i].cells[1]);
     }
 }
 
-function minor(obj) {
-    for(let item of obj) {
-        +item.innerHTML < 18 ? setAtr(item.parentElement, "style", "text-decoration: line-through") : "";
+function checkAvailability(item) {
+    let tr = item.parentElement;
+    if(item.getAttribute("data-available") === "true") {
+        setClass(tr, "available");
+    } else if(item.hasAttribute("data-available")) {
+        setClass(tr, "unavailable");
+
+    } else {
+        setAtr(tr, "hidden", "");
     }
 }
+
+function checkSex(item) {
+    let tr = item.parentElement;
+    if(item.innerHTML == "m") {
+        setClass(tr, "male");
+    } else if(item.innerHTML == "f") {
+        setClass(tr, "female");    
+    } 
+}
+
+function checkMinor(item) {+item.innerHTML < 18 ? setAtr(item.parentElement, "style", "text-decoration: line-through;") : "";}
 
 function setAtr(item, atr, value ="") {item.setAttribute(atr, value)}
+function setClass(item, value) {item.classList.add(value)}
+
